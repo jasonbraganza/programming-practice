@@ -47,7 +47,7 @@ def list_entries(data):
     reversed_list = reversed(data)  # reversing the list to get latest items on top
     for index, item in enumerate(
         reversed_list
-    ):  # using enumerate to get list entry numbers along with the entries themselves
+    ):  # using enumerate to get list entry numbers along with the entries themselves. hope this works alright
         print(f"{index+1}. {item}")  # adding 1 so that entry numbers don’t start at 0
 
 
