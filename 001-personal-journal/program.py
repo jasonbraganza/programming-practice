@@ -36,7 +36,7 @@ def run_event_loop():
         elif cmd != "x":
             print(f"Sorry, {cmd} is not a valid command. Please try again")
     print("Saving journal …")
-    # journal.save(journal_file_name, journal_data)
+    journal.save(journal_file_name, journal_data)
     print("Goodbye!")
 
 
