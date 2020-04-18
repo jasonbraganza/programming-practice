@@ -21,19 +21,19 @@ def run_event_loop():
     print(" ")
     print("Hey, the journal app has launched!")
     print("What do you want to do with your journal?")
-    cmd = "None"
+    cmd = "Nothing"
     journal_file_name = "default"
     journal_data = journal.load(
         journal_file_name
     )  # creating a list to hold the journal data
-    while cmd != "x":
+    while cmd != "x" and cmd:
         cmd = input("(A)dd an entry, (L)ist entries or e(X)it? ")
         cmd = cmd.lower().strip()
         if cmd == "a":
             add_entry(journal_data)
         elif cmd == "l":
             list_entries(journal_data)
-        elif cmd != "x":
+        elif cmd != "x" and cmd:
             print(f"Sorry, {cmd} is not a valid command. Please try again")
     print("Saving journal …")
     journal.save(journal_file_name, journal_data)
