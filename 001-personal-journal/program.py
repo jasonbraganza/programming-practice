@@ -16,7 +16,7 @@ def main_header():
 
 def run_event_loop():
     """
-    Runs an event loop to accept commands.
+    Runs an event loop to accept commands, lets one add entries, list them or exit the program.
     """
     print(" ")
     print("Hey, the journal app has launched!")
@@ -60,6 +60,8 @@ def add_entry(data):
 
 
 def main():
+    """piece that kicks the whole thing off!
+    """
     main_header()
     run_event_loop()
 

@@ -6,7 +6,15 @@ import os  # to do file i/o
 
 
 def get_file_name(file_name):
-    f_name = os.path.abspath(os.path.join("./journals", file_name + ".jrl"))
+        """gets the full filename path
+        
+        Arguments:
+            file_name {variable} -- need name of file
+        
+        Returns:
+            filepath -- returns the complete filepath
+        """    
+        f_name = os.path.abspath(os.path.join("./journals", file_name + ".jrl"))
     return f_name
 
 
@@ -33,6 +41,12 @@ def load(file_name):
 
 
 def save(file_name, journal_data):
+    """Saves the list to a file
+    
+    Arguments:
+        file_name {variable} -- specifies name of file to save to
+        journal_data {list} -- the entries we typed in
+    """    
     full_path_file_name = get_file_name(file_name)
 
     with open(full_path_file_name, "w") as fout:
@@ -41,4 +55,10 @@ def save(file_name, journal_data):
 
 
 def add_entry(journal_data, text):
+    """Appends typed in entries to the list
+    
+    Arguments:
+        journal_data {list} -- The list holding the entries
+        text {string} -- The actual entry
+    """    
     journal_data.append(text)
