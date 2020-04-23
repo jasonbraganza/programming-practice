@@ -1,5 +1,10 @@
 import requests
 import bs4
+import collections
+
+weather_report_builder = collections.namedtuple(
+    "weather_report", "area, temperatureinc"
+)
 
 
 def main():
@@ -9,7 +14,10 @@ def main():
     print_header()
     area_name = input("What area in India do you want the weather for? ")
     area_weather_raw_data = get_html_from_web(area_name)
-    get_weather_from_html(area_weather_raw_data)
+    weather_report = get_weather_from_html(area_weather_raw_data)
+    print(
+        f"The area closest is {weather_report.area} and the temperature is {weather_report.temperatureinc}° C."
+    )
     # display forecast
 
 
@@ -39,6 +47,16 @@ def get_html_from_web(some_area_name):
 
 def get_weather_from_html(some_raw_requests_data):
     soup = bs4.BeautifulSoup(some_raw_requests_data, features="html.parser")
+    city_detected = (
+        soup.find("h1")
+        .get_text()
+        .replace("Weather Conditions", "")
+        .replace("star_ratehome", "")
+    )
+    temperaturef = soup.find(class_="wu-value wu-value-to").get_text()
+    temperaturec = round(((int(temperaturef) - 32) * 5 / 9), 2)
+    wu_report = weather_report_builder(area=city_detected, temperatureinc=temperaturec)
+    return wu_report
 
 
 if __name__ == "__main__":
