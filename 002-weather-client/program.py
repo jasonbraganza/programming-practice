@@ -2,6 +2,7 @@ import requests
 import bs4
 import collections
 
+# creating a named tuple so that i can actually refer to names and temperatures easier
 weather_report_builder = collections.namedtuple(
     "weather_report", "area, temperatureinc"
 )
@@ -9,7 +10,10 @@ weather_report_builder = collections.namedtuple(
 
 def main():
     """
-    Kicks things off by launching stuff
+    gets the area name from the user
+    goes to wunderground and attempts to get the webpage
+    parses the webpage
+    and then gets the temperature and displays it.
     """
     print_header()
     area_name = input("What area in India do you want the weather for? ")
@@ -46,6 +50,14 @@ def get_html_from_web(some_area_name):
 
 
 def get_weather_from_html(some_raw_requests_data):
+    """
+    Runs beautiful soup on the raw requests date and extracts the approximate place found along with it’s temperature and returns those as a tuple.
+
+    :param some_raw_requests_data: requests library object
+    :type some_raw_requests_data: string
+    :return: name of the closest matched place and the temperature found.
+    :rtype: tuple
+    """
     soup = bs4.BeautifulSoup(some_raw_requests_data, features="html.parser")
     city_detected = (
         soup.find("h1")
