@@ -1,4 +1,5 @@
-# Small game, so that I learn the basics of object oriented programming and classes lets keep going on to test rewrap. lets see if this works. how now brown cow?
+# Small game, so that I learn the basics of object oriented programming and
+# classes.
 
 import random  # to randomly pick a monster
 import time  # to give our hero time to recover
@@ -32,7 +33,13 @@ def header_print():
 
 def game_loop():
     """
-    [summary]
+    Gets creatures from the creature module
+    Picks a random creature
+    Asks the user, to pick an action.
+    If the hero attacks, it rolls the dice and sees who wins.  
+    If the hero looks around, it presents a list of creatures left.
+    If the hero decides to run away, it justs brings up another creature
+
     """
     creatures = [
         SmallAnimal("Toad", 1),
@@ -52,7 +59,10 @@ def game_loop():
         )
         print()
 
-        cmd = input("Do you [a]ttack, [r]un away or [l]ook around? ")
+        cmd = input(
+            """Do you [a]ttack, [r]un away or [l]ook around? 
+Else hit any other key to quit. """
+        )
         if cmd == "a":
             if hero.attack(active_creature):
                 creatures.remove(active_creature)

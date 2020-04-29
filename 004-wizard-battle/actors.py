@@ -1,7 +1,12 @@
-import random
+import random  # to randomly role the dice to see who’d win a fight!
 
 
 class Creature:
+    """
+    Basic creature template.
+    has a name and a level
+    """
+
     def __init__(self, name, level):
         self.name = name
         self.level = level
@@ -14,13 +19,13 @@ class Creature:
 
 
 class Wizard(Creature):
-    # def __init__(self, name, level):
-    #     super().__init__(name, level)
-    #     self.name = name
-    #     self.level = level
+    """
+    Builds off the creature class to create the hero and the boss villain
+    Also defines their defensive rolls
 
-    def __repr__(self):
-        return f"I am a {self.name} with level, {self.level}"
+    :param Creature: main base class
+    :type Creature: object
+    """
 
     def attack(self, creature):
         print()
@@ -46,12 +51,29 @@ The brave wizard {self.name} been defeated!"""
 
 
 class SmallAnimal(Creature):
+
+    """
+    Builds off the creature class to create small animals
+    Also defines their defensive rolls  
+    
+    :param Creature: main base class
+    :type Creature: object
+    """
+
     def get_defensive_roll(self):
         base_roll = super().get_defensive_roll()
         return base_roll / 2
 
 
 class Dragon(Creature):
+    """
+    Builds off the creature class to create small animals
+    Also defines their defensive rolls  
+    
+    :param Creature: main base class
+    :type Creature: object
+    """
+
     def __init__(self, name, level, scaliness, breathes_fire):
         super().__init__(name, level)
         self.scaliness = scaliness
