@@ -1,4 +1,4 @@
-import random  # to randomly role the dice to see who’d win a fight!
+import random  # to randomly role the dice to see who would win a fight!
 
 
 class Creature:
