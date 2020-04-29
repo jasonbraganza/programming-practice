@@ -1,4 +1,7 @@
-from actors import Wizard, Creature
+import random
+import time
+
+from actors import Wizard, Creature, SmallAnimal, Dragon
 
 
 def main():
@@ -19,24 +22,59 @@ def header_print():
 def game_loop():
 
     creatures = [
-        Creature("Toad", 1),
+        SmallAnimal("Toad", 1),
         Creature("Tiger", 15),
-        Creature("Bat", 3),
-        Creature("Dragon", 50),
-        Creature("Evil Wizard", 1000),
+        SmallAnimal("Bat", 3),
+        Dragon("Big Dragon", 50, 75, True),
+        Creature("Evil Wizard", 500),
     ]
     hero = Wizard("Merlin", 75)
 
     while True:
+
+        active_creature = random.choice(creatures)
+        print()
+        print(
+            f"A {active_creature.name}, of level {active_creature.level} appears from the dark, dank, forest!"
+        )
+        print()
+
         cmd = input("Do you [a]ttack, [r]un away or [l]ook around? ")
         if cmd == "a":
-            print("AAAAKRAMAN!")
+            if hero.attack(active_creature):
+                creatures.remove(active_creature)
+            else:
+                print("Our wizard needs to retreat and recover")
+                time.sleep(5)
+                print(
+                    "Hurrah! Our brave one returns, rejuvenated in mind, body and spirit!"
+                )
+                print()
+
         elif cmd == "r":
-            print("Run away! Run away if you want to survive!")
+            print()
+            print(
+                f"The wizard has become unsure of his power! Best to flee! Fly, {hero.name}! Fly!"
+            )
+            print()
         elif cmd == "l":
-            print("Well lookieee here")
+            print()
+            print(f"Our Wizard {hero.name}, looks around and sees: ")
+            for c in creatures:
+                print(f"A {c.name} of level {c.level}")
+            print()
         else:
             print("Ok exiting game")
+            break
+
+        if not creatures:
+            print(
+                f"""You, brave {hero.name} have defeated all the creatures!
+You are a true hero!
+Adieu! Until we meet again!
+
+"""
+            )
             break
 
 
