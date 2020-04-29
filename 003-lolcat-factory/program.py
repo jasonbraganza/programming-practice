@@ -12,10 +12,9 @@ import cat_service  # module that actually goes to the net and gets the pics and
 
 def main():
     """
-    Prints the header
-    Sets up a folder to save cat images in
-    calls the cat service module to download and save images in the folder
-    opens up the folder in the gui.
+    Prints the header Sets up a folder to save cat images in calls the cat
+    service module to download and save images in the folder opens up the
+    folder in the gui.
     """
     print_header()
     cat_folder = get_or_create_output_folder()
@@ -35,11 +34,11 @@ def print_header():
 
 def get_or_create_output_folder():
     """
-    returns (or creates first and returns) a subfolder in the program directory to save cat images.
+    returns (or creates first and returns) a subfolder in the program directory
+    to save cat images.
 
 
-    :return: folder to save images in 
-    :rtype: string
+    :return: folder to save images in :rtype: string
     """
     folder = "lolcats"
     base_folder = os.path.dirname(__file__)
@@ -52,11 +51,11 @@ def get_or_create_output_folder():
 
 def download_cats(cat_folder):
     """
-    calls the cat service module repeatedly until cat count is reached.
-    the loop also gives it a series of incrementing file names
+    calls the cat service module repeatedly until cat count is reached. the
+    loop also gives it a series of incrementing file names
 
-    :param cat_folder: folder to save the cat images in
-    :type cat_folder: string
+    :param cat_folder: folder to save the cat images in :type cat_folder:
+    string
     """
     cat_count = 5
     print("Contacting LOLcat server to download cats … ")
@@ -69,10 +68,11 @@ def download_cats(cat_folder):
 
 def open_cat_folder(cat_folder):
     """
-    opens the folder in the operating system gui, so that the user can enjoy their lolcat images :)
+    opens the folder in the operating system gui, so that the user can enjoy
+    their lolcat images :)
 
-    :param cat_folder: the folder, that the images are saved in
-    :type cat_folder: string
+    :param cat_folder: the folder, that the images are saved in :type
+    cat_folder: string
     """
     if platform.system() == "Darwin":
         subprocess.call(["open", cat_folder])
