@@ -1,10 +1,21 @@
-import random
-import time
+# Small game, so that I learn the basics of object oriented programming and classes lets keep going on to test rewrap. lets see if this works. how now brown cow?
 
-from actors import Wizard, Creature, SmallAnimal, Dragon
+import random  # to randomly pick a monster
+import time  # to give our hero time to recover
+
+from actors import (
+    Wizard,
+    Creature,
+    SmallAnimal,
+    Dragon,
+)  # all the characters in the game are defined there. getting them over here.
 
 
 def main():
+    """
+    Kicks things off, as usual.
+    Prints our header and runs the game
+    """
     header_print()
     game_loop()
 
@@ -20,7 +31,9 @@ def header_print():
 
 
 def game_loop():
-
+    """
+    [summary]
+    """
     creatures = [
         SmallAnimal("Toad", 1),
         Creature("Tiger", 15),
