@@ -4,7 +4,6 @@ https://www.poetryfoundation.org/poems/poem-of-the-day and put it into an rss
 file for me, so that i can read it in my RSS reader
 """
 
-import typing
 from datetime import date, datetime
 
 import requests
