@@ -44,7 +44,7 @@ def create_rss_feed(poemlink):
             PyRSS2Gen.RSSItem(
                 title=f"Poem for {date.today()}",
                 link=poemlink,
-                guid=PyRSS2Gen.Guid(poemlink),
+                guid=PyRSS2Gen.Guid(f"Poem for {date.today()}"),
                 pubDate=datetime.now(),
             ),
         ],

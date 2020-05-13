@@ -9,13 +9,25 @@ Read in an irc log file and figure out who spoke how many lines
 # once done, print out who spoke how many lines by looping over the items in the dictionary.
 
 import os
+import subprocess
+import re
 
 
 def main():
-    nicknames = (
+    nickname_dict = (
         {}
     )  # creating a dictionary to hold the nicknames and the number of lines they spoke
-    # read in a file
+    # get the file name
+    file_name = input(
+        "Please enter a file (with the entire path if in a different folder): "
+    )
+    # read it in and start processing it
+    with open(file_name, "r") as fin:
+        file_contents = fin
+        split_file_contents = []
+        for line in file_contents:
+            line = line.strip()
+            print(line)
 
 
 if __name__ == "__main__":
