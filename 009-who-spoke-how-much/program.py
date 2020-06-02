@@ -9,7 +9,6 @@ Read in an irc log file and figure out who spoke how many lines
 # once done, print out who spoke how many lines by looping over the items in the dictionary.
 
 import os
-import subprocess
 import re
 
 
@@ -23,8 +22,7 @@ def main():
     )
     # read it in and start processing it
     with open(file_name, "r") as fin:
-        file_contents = fin
-        for every_line in file_contents:
+        for every_line in fin:
             split_line_list = re.split(r"(]\s|>\s)", every_line)
             if len(split_line_list) <= 3:
                 continue
