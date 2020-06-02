@@ -13,9 +13,8 @@ import re
 
 
 def main():
-    nickname_dict = (
-        {}
-    )  # creating a dictionary to hold the nicknames and the number of lines they spoke
+    # creating a dictionary to hold the nicknames and the number of lines they spoke
+    nickname_dict = {}
     # get the log file name to process
     file_name = input(
         "Please enter a file (with the entire path if in a different folder): "
