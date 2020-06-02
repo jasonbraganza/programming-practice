@@ -17,17 +17,27 @@ def main():
     nickname_dict = (
         {}
     )  # creating a dictionary to hold the nicknames and the number of lines they spoke
-    # get the file name
+    # get the log file name to process
     file_name = input(
         "Please enter a file (with the entire path if in a different folder): "
     )
     # read it in and start processing it
     with open(file_name, "r") as fin:
         file_contents = fin
-        split_file_contents = []
-        for line in file_contents:
-            line = line.strip()
-            print(line)
+        for every_line in file_contents:
+            split_line_list = re.split(r"(]\s|>\s)", every_line)
+            if len(split_line_list) <= 3:
+                continue
+            else:
+                nickname = split_line_list[2].lstrip("<").lstrip("@")
+                number_of_words = len(split_line_list[4].split())
+                # print(f"{nick_name} said {words} words")
+                if nickname not in nickname_dict.keys():
+                    nickname_dict[nickname] = number_of_words
+                else:
+                    nickname_dict[nickname] += number_of_words
+    for name, blah in sorted(nickname_dict.items()):
+        print(f"{name} spoke {blah} words")
 
 
 if __name__ == "__main__":
