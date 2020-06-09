@@ -31,7 +31,7 @@ def search_event_loop():
         except requests.exceptions.ConnectionError:
             print("Error: Your network is down.")
         except Exception as x:
-            print("Unexpected error. Details: {}".format(x))
+            print(f"Unexpected error. Details: {x}")
 
     print("exiting...")
 
